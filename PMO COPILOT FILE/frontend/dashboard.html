@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PMO Copilot AI - Decision Dashboard with executive recommendations, agent insights, and KPI metrics.">
+  
+  <title>Decision Dashboard - PMO Copilot AI</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="bg-glow blob-1" aria-hidden="true"></div>
+  <div class="bg-glow blob-2" aria-hidden="true"></div>
+  <div class="bg-glow blob-3" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#logoGrad)" />
+          <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#3B82F6" />
+              <stop offset="1" stop-color="#8B5CF6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>PMO Copilot <span class="logo-accent">AI</span></span>
+      </a>
+
+      <div class="nav-cta-desktop">
+        <a href="index.html" class="btn btn-primary">New Analysis</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section-container">
+    <div class="dash-container">
+
+      <!-- Dashboard Header -->
+      <div class="dash-header">
+        <div class="dash-title-block">
+          <h1 class="dash-title"><span class="gradient-text">Decision</span> Dashboard</h1>
+        </div>
+        <div class="dash-meta-grid">
+          <div class="dash-meta-item">
+            <div class="dash-meta-label">Project Name</div>
+            <div class="dash-meta-val" id="metaProjectName">—</div>
+          </div>
+          <div class="dash-meta-item">
+            <div class="dash-meta-label">Industry</div>
+            <div class="dash-meta-val" id="metaIndustry">—</div>
+          </div>
+          <div class="dash-meta-item">
+            <div class="dash-meta-label">Decision Goal</div>
+            <div class="dash-meta-val" id="metaGoal">—</div>
+          </div>
+          <div class="dash-meta-item">
+            <div class="dash-meta-label">Analysis Completed</div>
+            <div class="dash-meta-val" id="metaTimestamp">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Recommendation -->
+      <div class="exec-rec-card" id="execRecCard">
+        <div class="exec-rec-content">
+          <div class="rec-badge-wrap">
+            <span class="rec-badge rec-proceed" id="recBadge">✓ Proceed</span>
+          </div>
+          <h2 class="rec-header-title" id="recTitle">Project Analysis Complete</h2>
+          <p class="rec-desc" id="recDesc">All agents have completed their analysis. The project demonstrates strong feasibility with manageable risks and a clear delivery path.</p>
+        </div>
+        <div class="exec-rec-stats">
+          <div class="rec-stat">
+            <span class="rec-stat-val confidence" id="recConfidence">94%</span>
+            <span class="rec-stat-lbl">Confidence</span>
+          </div>
+          <div class="rec-stat">
+            <span class="rec-stat-val risk-low" id="recRisk">Low</span>
+            <span class="rec-stat-lbl">Risk Level</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agent Recommendations -->
+      <h2 class="dash-section-title">Agent Recommendations</h2>
+      <div class="agents-rec-grid">
+
+        <!-- Business Analyst Agent -->
+        <div class="agent-rec-card">
+          <div class="agent-card-header">
+            <h3 class="agent-card-title"><span>🧠</span> Business Analyst</h3>
+            <span class="agent-card-badge">Alex Chen</span>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Business Summary</div>
+            <div class="agent-sect-body" id="baSummary">—</div>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Key Requirements</div>
+            <div class="agent-sect-body" id="baRequirements">—</div>
+          </div>
+          <div class="agent-next-step" id="baNextStep">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>—</span>
+          </div>
+        </div>
+
+        <!-- Project Manager Agent -->
+        <div class="agent-rec-card">
+          <div class="agent-card-header">
+            <h3 class="agent-card-title"><span>📋</span> Project Manager</h3>
+            <span class="agent-card-badge">Sarah Mitchell</span>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Estimated Timeline</div>
+            <div class="agent-sect-body" id="pmTimeline">—</div>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Major Milestones</div>
+            <div class="agent-sect-body" id="pmMilestones">—</div>
+          </div>
+          <div class="agent-next-step" id="pmNextStep">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>—</span>
+          </div>
+        </div>
+
+        <!-- Risk Management Agent -->
+        <div class="agent-rec-card">
+          <div class="agent-card-header">
+            <h3 class="agent-card-title"><span>⚠️</span> Risk Manager</h3>
+            <span class="agent-card-badge">Dr. James Okafor</span>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Top Risks</div>
+            <div class="agent-sect-body" id="riskTopRisks">—</div>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Risk Severity & Mitigations</div>
+            <div class="agent-sect-body" id="riskMitigations">—</div>
+          </div>
+          <div class="agent-next-step" id="riskNextStep">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>—</span>
+          </div>
+        </div>
+
+        <!-- Release Manager Agent -->
+        <div class="agent-rec-card">
+          <div class="agent-card-header">
+            <h3 class="agent-card-title"><span>🚀</span> Release Manager</h3>
+            <span class="agent-card-badge">Priya Sharma</span>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Release Readiness Score</div>
+            <div class="agent-sect-body" id="relReadiness">—</div>
+          </div>
+          <div class="agent-card-sect">
+            <div class="agent-sect-title">Deployment Recommendation & Checklist</div>
+            <div class="agent-sect-body" id="relChecklist">—</div>
+          </div>
+          <div class="agent-next-step" id="relNextStep">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decision Insights KPIs -->
+      <h2 class="dash-section-title">Decision Insights</h2>
+      <div class="insights-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">Timeline Health</div>
+          <div class="kpi-metric-wrap">
+            <span class="kpi-val" id="kpiTimelineVal">—</span>
+            <span class="kpi-status" id="kpiTimelineStatus">—</span>
+          </div>
+          <div class="kpi-progress-bg"><div class="kpi-progress-bar" id="kpiTimelineBar"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Budget Health</div>
+          <div class="kpi-metric-wrap">
+            <span class="kpi-val" id="kpiBudgetVal">—</span>
+            <span class="kpi-status" id="kpiBudgetStatus">—</span>
+          </div>
+          <div class="kpi-progress-bg"><div class="kpi-progress-bar" id="kpiBudgetBar"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Risk Score</div>
+          <div class="kpi-metric-wrap">
+            <span class="kpi-val" id="kpiRiskVal">—</span>
+            <span class="kpi-status" id="kpiRiskStatus">—</span>
+          </div>
+          <div class="kpi-progress-bg"><div class="kpi-progress-bar" id="kpiRiskBar"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Requirement Completeness</div>
+          <div class="kpi-metric-wrap">
+            <span class="kpi-val" id="kpiReqVal">—</span>
+            <span class="kpi-status" id="kpiReqStatus">—</span>
+          </div>
+          <div class="kpi-progress-bg"><div class="kpi-progress-bar" id="kpiReqBar"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Release Readiness</div>
+          <div class="kpi-metric-wrap">
+            <span class="kpi-val" id="kpiReleaseVal">—</span>
+            <span class="kpi-status" id="kpiReleaseStatus">—</span>
+          </div>
+          <div class="kpi-progress-bg"><div class="kpi-progress-bar" id="kpiReleaseBar"></div></div>
+        </div>
+      </div>
+
+      <!-- Why This Recommendation Section -->
+      <h2 class="dash-section-title">Why This Recommendation?</h2>
+      <div class="why-section">
+        <p class="why-lead" id="whyLead">The executive recommendation is derived from a weighted analysis of all four specialized AI agents. Each agent independently evaluated a specific domain and contributed a confidence-weighted score to the final outcome.</p>
+        <div class="why-contrib-list">
+          <div class="why-contrib-item">
+            <div class="why-contrib-icon">🧠</div>
+            <div class="why-contrib-text">
+              <div class="why-contrib-name">Business Analyst Agent</div>
+              <div class="why-contrib-desc" id="whyBA">Validated core requirements coverage and stakeholder alignment. Confirmed that the functional scope is well-defined and achievable within standard delivery practices.</div>
+            </div>
+          </div>
+          <div class="why-contrib-item">
+            <div class="why-contrib-icon">📋</div>
+            <div class="why-contrib-text">
+              <div class="why-contrib-name">Project Manager Agent</div>
+              <div class="why-contrib-desc" id="whyPM">Confirmed that the proposed timeline is realistic given resource availability. Sprint planning aligned with deliverable dependencies and no critical-path conflicts detected.</div>
+            </div>
+          </div>
+          <div class="why-contrib-item">
+            <div class="why-contrib-icon">⚠️</div>
+            <div class="why-contrib-text">
+              <div class="why-contrib-name">Risk Management Agent</div>
+              <div class="why-contrib-desc" id="whyRisk">Identified manageable risks with actionable mitigations. No blocking risks were detected, and all high-severity items have pre-approved contingency plans.</div>
+            </div>
+          </div>
+          <div class="why-contrib-item">
+            <div class="why-contrib-icon">🚀</div>
+            <div class="why-contrib-text">
+              <div class="why-contrib-name">Release Manager Agent</div>
+              <div class="why-contrib-desc" id="whyRelease">Deployment infrastructure is compatible with the proposed architecture. CI/CD readiness checks passed and rollback procedures are documented.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Available Actions -->
+      <div class="actions-section">
+        <button class="btn btn-secondary btn-large" id="btnViewReport">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          View Full Report
+        </button>
+        <button class="btn btn-secondary btn-large" id="btnExportReport">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export Report
+        </button>
+        <a href="index.html" class="btn btn-primary btn-large">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Start New Analysis
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="section-container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#footerLogoGrad)" />
+            <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3B82F6" />
+                <stop offset="1" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>PMO Copilot <span class="logo-accent">AI</span></span>
+        </div>
+        <p class="footer-description">
+          A premium multi-agent AI system designed to assist project management offices, product leads, and delivery teams.
+        </p>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-title">Platform</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-title">Resources</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://github.com/placeholder-pmo-copilot-ai" target="_blank" rel="noopener noreferrer">GitHub Project</a></li>
+          <li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="footer-links-list">
+          <li><a href="mailto:support@pmocopilot.ai">support@pmocopilot.ai</a></li>
+          <li><span class="footer-text">London, UK / Global</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="section-container footer-bottom-flex">
+        <p class="footer-copyright">&copy; 2026 PMO Copilot AI. Powered by Google Gemini 2.0.</p>
+        <p class="footer-status">System Status: <span class="status-online">Online</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="ai-agent-service.js"></script>
+  <script src="api-service.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

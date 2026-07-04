@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PMO Copilot AI — Full Project Analysis Report with executive summary, requirements, roadmap, risk assessment, and release readiness.">
+
+  <title>Full Report - PMO Copilot AI</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="bg-glow blob-1" aria-hidden="true"></div>
+  <div class="bg-glow blob-2" aria-hidden="true"></div>
+  <div class="bg-glow blob-3" aria-hidden="true"></div>
+
+  <!-- Sticky Action Bar -->
+  <div class="report-action-bar" id="reportActionBar">
+    <div class="report-action-inner">
+      <div class="report-action-left">
+        <svg class="logo-icon" width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#rptLogoGrad)" />
+          <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="rptLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#3B82F6" />
+              <stop offset="1" stop-color="#8B5CF6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="report-action-title">Full Analysis Report</span>
+      </div>
+      <div class="report-action-right">
+        <a class="btn btn-secondary btn-sm" id="btnBackDashboard" href="dashboard.html">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Dashboard
+        </a>
+        <button class="btn btn-primary btn-sm" id="btnExportReport">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export Report
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <main class="section-container">
+    <div class="report-container">
+
+      <!-- Report Title Block -->
+      <div class="report-title-block">
+        <div class="report-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Project Analysis Report
+        </div>
+        <h1 class="report-main-title" id="reportTitle">—</h1>
+        <div class="report-meta-row">
+          <span class="report-meta-chip" id="reportIndustry">—</span>
+          <span class="report-meta-chip" id="reportGoal">—</span>
+          <span class="report-meta-chip" id="reportDate">—</span>
+        </div>
+      </div>
+
+      <!-- Section 1: Executive Summary -->
+      <section class="report-section" id="sectionExecSummary">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">📊</div>
+            <div>
+              <h2 class="report-section-title">Executive Summary</h2>
+              <p class="report-section-subtitle">High-level overview of the project analysis and recommendation</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="exec-summary-grid">
+              <div class="exec-summary-main">
+                <div class="exec-summary-rec-badge" id="execRecBadge">✓ Proceed</div>
+                <p class="exec-summary-text" id="execSummaryText">—</p>
+                <div class="exec-summary-highlights">
+                  <div class="highlight-item">
+                    <span class="highlight-label">Confidence</span>
+                    <span class="highlight-value" id="execConfidence">—</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-label">Risk Level</span>
+                    <span class="highlight-value" id="execRiskLevel">—</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-label">Timeline</span>
+                    <span class="highlight-value" id="execTimeline">—</span>
+                  </div>
+                  <div class="highlight-item">
+                    <span class="highlight-label">Release Readiness</span>
+                    <span class="highlight-value" id="execReadiness">—</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Business Requirements -->
+      <section class="report-section" id="sectionBizReqs">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">🧠</div>
+            <div>
+              <h2 class="report-section-title">Business Requirements</h2>
+              <p class="report-section-subtitle">Analysis by Business Analyst Agent — Alex Chen</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Business Context</h3>
+              <p class="report-text" id="bizContext">—</p>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Core Requirements</h3>
+              <div class="report-text" id="bizRequirements">—</div>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Stakeholder Alignment</h3>
+              <p class="report-text" id="bizStakeholder">—</p>
+            </div>
+            <div class="report-callout callout-info" id="bizNextStep">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Project Roadmap -->
+      <section class="report-section" id="sectionRoadmap">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">📋</div>
+            <div>
+              <h2 class="report-section-title">Project Roadmap</h2>
+              <p class="report-section-subtitle">Analysis by Project Manager Agent — Sarah Mitchell</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Estimated Timeline</h3>
+              <p class="report-text" id="roadmapTimeline">—</p>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Sprint Milestones</h3>
+              <div class="milestone-list" id="roadmapMilestones">—</div>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Resource & Dependency Notes</h3>
+              <p class="report-text" id="roadmapResources">—</p>
+            </div>
+            <div class="report-callout callout-info" id="roadmapNextStep">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Risk Assessment -->
+      <section class="report-section" id="sectionRisk">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">⚠️</div>
+            <div>
+              <h2 class="report-section-title">Risk Assessment</h2>
+              <p class="report-section-subtitle">Analysis by Risk Management Agent — Dr. James Okafor</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Risk Overview</h3>
+              <p class="report-text" id="riskOverview">—</p>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Identified Risks</h3>
+              <div class="risk-table-wrap" id="riskTable">—</div>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Mitigation Strategies</h3>
+              <div class="report-text" id="riskMitigations">—</div>
+            </div>
+            <div class="report-callout callout-warning" id="riskNextStep">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 9V13M12 17H12.01M5.07183 19H18.9282C20.4678 19 21.4301 17.3333 20.6603 16L13.7321 4C12.9623 2.66667 11.0377 2.66667 10.2679 4L3.33975 16C2.56995 17.3333 3.53223 19 5.07183 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Release Readiness -->
+      <section class="report-section" id="sectionRelease">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">🚀</div>
+            <div>
+              <h2 class="report-section-title">Release Readiness</h2>
+              <p class="report-section-subtitle">Analysis by Release Manager Agent — Priya Sharma</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Readiness Score</h3>
+              <div class="readiness-score-display" id="releaseScoreDisplay">
+                <div class="readiness-ring" id="readinessRing">
+                  <svg viewBox="0 0 120 120">
+                    <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,0.05)" stroke-width="8" fill="none" />
+                    <circle cx="60" cy="60" r="52" stroke="url(#ringGrad)" stroke-width="8" fill="none"
+                      stroke-dasharray="326.73" stroke-dashoffset="326.73" stroke-linecap="round"
+                      transform="rotate(-90 60 60)" id="readinessArc" />
+                    <defs>
+                      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <span class="readiness-ring-value" id="readinessValue">—</span>
+                </div>
+                <div class="readiness-summary" id="readinessSummary">—</div>
+              </div>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Deployment Strategy</h3>
+              <p class="report-text" id="releaseDeployment">—</p>
+            </div>
+            <div class="report-subsection">
+              <h3 class="report-subsection-title">Pre-Launch Checklist</h3>
+              <div class="checklist-wrap" id="releaseChecklist">—</div>
+            </div>
+            <div class="report-callout callout-info" id="releaseNextStep">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Final Recommendation -->
+      <section class="report-section report-section-final" id="sectionFinal">
+        <div class="report-section-header">
+          <div class="report-section-header-left">
+            <div class="report-section-icon">✅</div>
+            <div>
+              <h2 class="report-section-title">Final Recommendation</h2>
+              <p class="report-section-subtitle">Aggregated decision from all four AI agents</p>
+            </div>
+          </div>
+          <div class="report-section-chevron">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="report-section-body-wrapper">
+          <div class="report-section-body">
+            <div class="final-rec-block">
+              <div class="final-rec-verdict" id="finalVerdict">—</div>
+              <p class="final-rec-rationale" id="finalRationale">—</p>
+              <div class="final-rec-agents">
+                <div class="final-agent-vote">
+                  <span class="final-agent-icon">🧠</span>
+                  <span class="final-agent-name">Business Analyst</span>
+                  <span class="final-agent-status green" id="finalBA">—</span>
+                </div>
+                <div class="final-agent-vote">
+                  <span class="final-agent-icon">📋</span>
+                  <span class="final-agent-name">Project Manager</span>
+                  <span class="final-agent-status green" id="finalPM">—</span>
+                </div>
+                <div class="final-agent-vote">
+                  <span class="final-agent-icon">⚠️</span>
+                  <span class="final-agent-name">Risk Manager</span>
+                  <span class="final-agent-status" id="finalRisk">—</span>
+                </div>
+                <div class="final-agent-vote">
+                  <span class="final-agent-icon">🚀</span>
+                  <span class="final-agent-name">Release Manager</span>
+                  <span class="final-agent-status" id="finalRelease">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Actions -->
+      <div class="report-bottom-actions">
+        <a class="btn btn-secondary btn-large" id="btnBottomBackDashboard" href="dashboard.html">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M19 12H5M5 12L12 5M5 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to Dashboard
+        </a>
+        <button class="btn btn-primary btn-large" id="btnBottomExportReport">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export Report
+        </button>
+      </div>
+
+      <!-- Report Footer -->
+      <div class="report-footer-note">
+        <p>This report was generated by <strong>PMO Copilot AI</strong> using multi-agent analysis. All data is simulated for demonstration purposes.</p>
+        <p class="report-footer-timestamp" id="reportFooterTimestamp">—</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="ai-agent-service.js"></script>
+  <script src="api-service.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>

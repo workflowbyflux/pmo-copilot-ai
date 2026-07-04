@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PMO Copilot AI - Real-time AI agent collaboration and project analysis pipeline.">
+  
+  <title>AI Agent Collaboration - PMO Copilot AI</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="bg-glow blob-1" aria-hidden="true"></div>
+  <div class="bg-glow blob-2" aria-hidden="true"></div>
+  <div class="bg-glow blob-3" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#logoGrad)" />
+          <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#3B82F6" />
+              <stop offset="1" stop-color="#8B5CF6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>PMO Copilot <span class="logo-accent">AI</span></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="section-container">
+    <div class="collab-container">
+      
+      <!-- Title Block -->
+      <div class="collab-header-block">
+        <h1 class="collab-title">AI Agent <span class="gradient-text">Collaboration</span></h1>
+        <p class="collab-subtitle">Orchestrating specialized AI agents to generate your project delivery plan</p>
+      </div>
+
+      <!-- Overall Progress Bar Container -->
+      <div class="collab-progress-wrapper">
+        <div class="collab-progress-header">
+          <span class="collab-progress-label">Analysis Progress</span>
+          <span class="collab-progress-percent" id="progressPercent">0%</span>
+        </div>
+        <div class="collab-progress-container">
+          <div class="collab-progress-bar" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <!-- Agent Status Grid -->
+      <div class="collab-grid">
+        <!-- Card 1: Business Analyst Agent -->
+        <div class="collab-card state-waiting" id="card-ba">
+          <div class="collab-icon-wrap">🧠</div>
+          <h3 class="collab-agent-name">Business Analyst Agent</h3>
+          <p class="collab-agent-role">Requirements & User Stories</p>
+          <div class="collab-status-text" id="status-ba">Waiting to start...</div>
+          <div class="collab-status-badge" id="badge-ba">
+            <span class="collab-badge badge-waiting">Waiting</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Project Manager Agent -->
+        <div class="collab-card state-waiting" id="card-pm">
+          <div class="collab-icon-wrap">📋</div>
+          <h3 class="collab-agent-name">Project Manager Agent</h3>
+          <p class="collab-agent-role">Roadmaps & Sprints</p>
+          <div class="collab-status-text" id="status-pm">Waiting to start...</div>
+          <div class="collab-status-badge" id="badge-pm">
+            <span class="collab-badge badge-waiting">Waiting</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Risk Management Agent -->
+        <div class="collab-card state-waiting" id="card-risk">
+          <div class="collab-icon-wrap">⚠️</div>
+          <h3 class="collab-agent-name">Risk Management Agent</h3>
+          <p class="collab-agent-role">Risk Registry & 5x5 Matrix</p>
+          <div class="collab-status-text" id="status-risk">Waiting to start...</div>
+          <div class="collab-status-badge" id="badge-risk">
+            <span class="collab-badge badge-waiting">Waiting</span>
+          </div>
+        </div>
+
+        <!-- Card 4: Release Manager Agent -->
+        <div class="collab-card state-waiting" id="card-release">
+          <div class="collab-icon-wrap">🚀</div>
+          <h3 class="collab-agent-name">Release Manager Agent</h3>
+          <p class="collab-agent-role">Readiness & CI/CD Deployment</p>
+          <div class="collab-status-text" id="status-release">Waiting to start...</div>
+          <div class="collab-status-badge" id="badge-release">
+            <span class="collab-badge badge-waiting">Waiting</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Terminal Activity Feed -->
+      <div class="activity-feed-section">
+        <div class="activity-header">
+          <div class="activity-title">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 17L10 11L4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 19H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Live Activity Feed</span>
+          </div>
+          <span class="activity-badge" id="feedActiveAgent">System Idle</span>
+        </div>
+        <div class="activity-logs" id="activityLogs">
+          <!-- Logs will be dynamically appended here -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="section-container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#footerLogoGrad)" />
+            <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3B82F6" />
+                <stop offset="1" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>PMO Copilot <span class="logo-accent">AI</span></span>
+        </div>
+        <p class="footer-description">
+          A premium multi-agent AI system designed to assist project management offices, product leads, and delivery teams in generating plans, registers, and analysis.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Platform</h4>
+        <ul class="footer-links-list">
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Resources</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://github.com/placeholder-pmo-copilot-ai" target="_blank" rel="noopener noreferrer">GitHub Project</a></li>
+          <li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="footer-links-list">
+          <li><a href="mailto:support@pmocopilot.ai">support@pmocopilot.ai</a></li>
+          <li><span class="footer-text">London, UK / Global</span></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="section-container footer-bottom-flex">
+        <p class="footer-copyright">&copy; 2026 PMO Copilot AI. Powered by Google Gemini 2.0.</p>
+        <p class="footer-status">System Status: <span class="status-online">Online</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Collaboration Simulation -->
+  <script src="collaboration.js"></script>
+</body>
+</html>

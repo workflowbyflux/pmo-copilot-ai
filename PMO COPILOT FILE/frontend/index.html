@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PMO Copilot AI - A premium multi-agent AI system that evaluates project risks, plans roadmaps, analyzes requirements, and generates complete, exportable delivery reports.">
+  
+  <title>PMO Copilot AI - Smart Project Decision Support</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+  
+  <!-- Typography (Google Fonts: Outfit for Headers, Inter for Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Background Blobs -->
+  <div class="bg-glow blob-1" aria-hidden="true"></div>
+  <div class="bg-glow blob-2" aria-hidden="true"></div>
+  <div class="bg-glow blob-3" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="navLogo">
+        <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#logoGrad)" />
+          <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#3B82F6" />
+              <stop offset="1" stop-color="#8B5CF6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>PMO Copilot <span class="logo-accent">AI</span></span>
+      </a>
+
+      <!-- Hamburger Menu for Mobile -->
+      <button class="hamburger-menu" id="hamburger" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Nav Links -->
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+        </ul>
+        <div class="nav-cta-mobile">
+          <a href="#start-analysis" class="btn btn-primary">Start Analysis</a>
+        </div>
+      </nav>
+
+      <div class="nav-cta-desktop">
+        <a href="#start-analysis" class="btn btn-primary">Start Analysis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="section-container hero-grid">
+        <!-- Hero Content (Left) -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">Powered by Google Gemini 2.0 & ADK</span>
+          </div>
+          <h1 class="hero-headline">
+            Make Smarter Project Decisions with <span class="gradient-text">AI</span>
+          </h1>
+          <p class="hero-subheadline">
+            PMO Copilot AI uses multiple specialized AI agents to analyze your project, evaluate risks, recommend the best course of action, and generate a complete project delivery plan.
+          </p>
+          <div class="hero-actions">
+            <a href="#start-analysis" class="btn btn-primary btn-large">Start Analysis</a>
+            <button class="btn btn-secondary btn-large" id="btnWatchDemo">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-play">
+                <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+              </svg>
+              Watch Agent Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Visualization (Right) -->
+        <div class="hero-visual">
+          <div class="agent-workspace">
+            <div class="workspace-header">
+              <div class="window-controls">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="workspace-title">agent_orchestrator.py</div>
+              <div class="workspace-badge">RUNNING</div>
+            </div>
+
+            <!-- Agent Nodes Container -->
+            <div class="workspace-body">
+              <svg class="agent-connections" id="connectionsSvg" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG Paths will be dynamically controlled/drawn or animated via CSS/JS -->
+                <path id="path-ba-pm" class="connection-line" d="" />
+                <path id="path-pm-risk" class="connection-line" d="" />
+                <path id="path-risk-release" class="connection-line" d="" />
+                <path id="path-release-compiler" class="connection-line" d="" />
+                
+                <!-- Glowing pulses traveling along paths -->
+                <circle id="pulse-ba-pm" class="pulse-dot" r="4" fill="#06B6D4" />
+                <circle id="pulse-pm-risk" class="pulse-dot" r="4" fill="#3B82F6" />
+                <circle id="pulse-risk-release" class="pulse-dot" r="4" fill="#8B5CF6" />
+                <circle id="pulse-release-compiler" class="pulse-dot" r="4" fill="#EC4899" />
+              </svg>
+
+              <!-- Central compiled report node -->
+              <div class="central-compiler-gate">
+                <div class="report-node" id="reportNode">
+                  <div class="report-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </div>
+                  <span class="report-label">Consolidated Report</span>
+                </div>
+              </div>
+
+              <!-- Orbiting Agent Nodes -->
+              <!-- Agent 1: Business Analyst -->
+              <div class="agent-node" id="agent-ba" style="--angle: 0;">
+                <div class="agent-icon-wrapper">
+                  <span class="agent-avatar">AC</span>
+                  <div class="agent-glow"></div>
+                </div>
+                <div class="agent-info">
+                  <div class="agent-name">Alex Chen</div>
+                  <div class="agent-role">Business Analyst</div>
+                </div>
+              </div>
+
+              <!-- Agent 2: Project Manager -->
+              <div class="agent-node" id="agent-pm" style="--angle: 72;">
+                <div class="agent-icon-wrapper">
+                  <span class="agent-avatar">SM</span>
+                  <div class="agent-glow"></div>
+                </div>
+                <div class="agent-info">
+                  <div class="agent-name">Sarah Mitchell</div>
+                  <div class="agent-role">Project Manager</div>
+                </div>
+              </div>
+
+              <!-- Agent 3: Risk Manager -->
+              <div class="agent-node" id="agent-risk" style="--angle: 144;">
+                <div class="agent-icon-wrapper">
+                  <span class="agent-avatar">JO</span>
+                  <div class="agent-glow"></div>
+                </div>
+                <div class="agent-info">
+                  <div class="agent-name">Dr. James Okafor</div>
+                  <div class="agent-role">Risk Manager</div>
+                </div>
+              </div>
+
+              <!-- Agent 4: Release Manager -->
+              <div class="agent-node" id="agent-release" style="--angle: 216;">
+                <div class="agent-icon-wrapper">
+                  <span class="agent-avatar">PS</span>
+                  <div class="agent-glow"></div>
+                </div>
+                <div class="agent-info">
+                  <div class="agent-name">Priya Sharma</div>
+                  <div class="agent-role">Release Manager</div>
+                </div>
+              </div>
+
+              <!-- Agent 5: Report Compiler -->
+              <div class="agent-node" id="agent-compiler" style="--angle: 288;">
+                <div class="agent-icon-wrapper">
+                  <span class="agent-avatar">SE</span>
+                  <div class="agent-glow"></div>
+                </div>
+                <div class="agent-info">
+                  <div class="agent-name">Synthesis Engine</div>
+                  <div class="agent-role">Report Compiler</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal log output -->
+            <div class="workspace-terminal">
+              <div class="terminal-logs" id="terminalLogs">
+                <div class="log-line system">&gt; Initializing PMO Copilot Orchestration Pipeline...</div>
+                <div class="log-line system">&gt; Loaded Google Gemini 2.0 Engine. Ready.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">Designed for Intelligent Project Governance</h2>
+          <p class="section-subtitle">Why teams choose PMO Copilot AI to de-risk delivery and fast-track decisions.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1: Multi-Agent Intelligence -->
+          <div class="feature-card">
+            <div class="feature-icon-container purple">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Multi-Agent Intelligence</h3>
+            <p class="feature-description">
+              Specialized AI agents collaborate instead of relying on a single general chatbot. Each agent executes a tailored persona (BA, PM, Risk, Release) to analyze specific angles of your project.
+            </p>
+          </div>
+
+          <!-- Feature 2: Decision Support -->
+          <div class="feature-card">
+            <div class="feature-icon-container blue">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 20V10M12 20V4M6 20V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Decision Support</h3>
+            <p class="feature-description">
+              Receive recommendations backed by quantitative analysis, risk matrices, and statistical confidence scores. Eliminate guesswork and back decisions with data.
+            </p>
+          </div>
+
+          <!-- Feature 3: Exportable Reports -->
+          <div class="feature-card">
+            <div class="feature-icon-container cyan">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Exportable Reports</h3>
+            <p class="feature-description">
+              Generate professional project reports ready to share with stakeholders. Compile roadmaps, risk registers, and release plans in clean Markdown or document structures.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">The Analysis Pipeline</h2>
+          <p class="section-subtitle">Four simple steps to transform project vision into a concrete delivery plan.</p>
+        </div>
+
+        <div class="steps-container">
+          <div class="steps-line" aria-hidden="true">
+            <div class="steps-progress" id="stepsProgress"></div>
+          </div>
+          
+          <div class="steps-grid">
+            <!-- Step 1 -->
+            <div class="step-item" id="step-1">
+              <div class="step-number-container">
+                <span class="step-num">1</span>
+              </div>
+              <h3 class="step-title">Describe your project</h3>
+              <p class="step-description">Provide a simple description, goals, and any files or initial parameters you have.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-item" id="step-2">
+              <div class="step-number-container">
+                <span class="step-num">2</span>
+              </div>
+              <h3 class="step-title">AI agents collaborate</h3>
+              <p class="step-description">Our specialized agents automatically assign tasks and run sequential analyses in the background.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-item" id="step-3">
+              <div class="step-number-container">
+                <span class="step-num">3</span>
+              </div>
+              <h3 class="step-title">Review recommendations</h3>
+              <p class="step-description">Analyze interactive roadmaps, 5x5 risk matrix registers, and release recommendations.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-item" id="step-4">
+              <div class="step-number-container">
+                <span class="step-num">4</span>
+              </div>
+              <h3 class="step-title">Export your report</h3>
+              <p class="step-description">Download compiled reports, share markdown documents, or sync roadmaps to project trackers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Interactive Tool Section (Start Analysis Form Placeholder) -->
+    <section class="cta-section" id="start-analysis">
+      <div class="section-container cta-box-wrap">
+        <div class="cta-box">
+          <div class="cta-content">
+            <h2 class="cta-title">Start Your First Project Analysis</h2>
+            <p class="cta-text">Enter your project concept below. The PMO Copilot AI agents will break down requirements, evaluate risk, plan roadmap milestones, and compile a report draft.</p>
+            
+            <form class="analysis-form" id="analysisForm">
+              <div class="form-group">
+                <label for="projectIndustry" class="form-label">Industry</label>
+                <select id="projectIndustry" class="form-input">
+                  <option value="Technology">Technology</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Finance">Finance</option>
+                  <option value="Education">Education</option>
+                  <option value="Retail">Retail</option>
+                  <option value="Construction">Construction</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Government">Government</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="decisionGoal" class="form-label">Decision Goal</label>
+                <select id="decisionGoal" class="form-input">
+                  <option value="Build a New Product">Build a New Product</option>
+                  <option value="Plan a Project">Plan a Project</option>
+                  <option value="Assess Project Risks">Assess Project Risks</option>
+                  <option value="Improve an Existing Project">Improve an Existing Project</option>
+                  <option value="Release Planning">Release Planning</option>
+                  <option value="General Project Advice">General Project Advice</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <textarea id="projectDescription" class="form-input" rows="4" placeholder="Example: Build a B2B SaaS analytics dashboard that integrates with BigQuery, requiring role-based access control and high-performance charts..."></textarea>
+                <div class="form-help">Tip: The more detailed your description, the more comprehensive the agent outputs will be.</div>
+              </div>
+              <div class="form-actions-align">
+                <button type="submit" class="btn btn-primary btn-large">
+                  <span class="btn-text">Initialize Agents</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-arrow-right">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        <div class="about-grid">
+          <div class="about-text">
+            <h2 class="about-title">Why Multi-Agent PMO?</h2>
+            <p class="about-para">
+              Conventional single-prompt chat systems often suffer from context dilution, drift, and lack of specialized knowledge when designing full-scale projects.
+            </p>
+            <p class="about-para">
+              <strong>PMO Copilot AI</strong> solves this by dividing execution into a multi-role team. By separating concerns between a <em>Business Analyst</em>, <em>Project Manager</em>, <em>Risk Manager</em>, and <em>Release Manager</em>, the platform produces structured deliverables that are consistent, audit-logged, and validated against strict schemas.
+            </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <div class="stat-value">5+</div>
+                <div class="stat-label">Specialist Agents</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">10x</div>
+                <div class="stat-label">Faster Roadmapping</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Audit-Logged Runs</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-visual">
+            <div class="about-image-card">
+              <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="terminal-title-text">audit.log</span>
+              </div>
+              <div class="terminal-body-text">
+                <div class="log-entry"><span class="log-time">[18:43:02]</span> <span class="log-role">[SYS]</span> Initializing workflow for: <span class="log-val">"B2B SaaS dashboard"</span></div>
+                <div class="log-entry"><span class="log-time">[18:43:05]</span> <span class="log-role">[BA_AGENT]</span> Generated 12 functional user stories</div>
+                <div class="log-entry"><span class="log-time">[18:43:12]</span> <span class="log-role">[PM_AGENT]</span> Mapped milestones for Phase 1 &amp; Phase 2</div>
+                <div class="log-entry"><span class="log-time">[18:43:18]</span> <span class="log-role">[RISK_AGENT]</span> Identified 5 high-impact risks with mitigations</div>
+                <div class="log-entry"><span class="log-time">[18:43:22]</span> <span class="log-role">[RELEASE_AGENT]</span> Created checklist for CI/CD pipeline deployments</div>
+                <div class="log-entry"><span class="log-time">[18:43:25]</span> <span class="log-role">[COMPILER]</span> Structured reports into final executive summary</div>
+                <div class="log-entry success"><span class="log-time">[18:43:26]</span> <span class="log-role">[SYS]</span> Pipeline run approved. Saved reports to folder.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Watch Demo Modal -->
+  <div class="modal" id="videoModal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop"></div>
+    <div class="modal-wrapper">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">PMO Copilot AI - Demo</h3>
+          <button class="modal-close" id="modalClose" aria-label="Close Demo Modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="video-placeholder">
+            <div class="video-mock-ui">
+              <div class="mock-sidebar">
+                <div class="mock-logo">🤖</div>
+                <div class="mock-item active">Dashboard</div>
+                <div class="mock-item">Projects</div>
+                <div class="mock-item">Reports</div>
+              </div>
+              <div class="mock-main">
+                <div class="mock-nav">Project: E-Commerce Mobile App</div>
+                <div class="mock-content-area">
+                  <div class="mock-card glow-active">
+                    <div class="mock-card-header">Collaborating Agents</div>
+                    <div class="mock-bubbles">
+                      <div class="bubble active">Alex Chen (BA)</div>
+                      <div class="bubble">Sarah Mitchell (PM)</div>
+                      <div class="bubble">Dr. James Okafor (Risk)</div>
+                    </div>
+                    <div class="mock-terminal">
+                      <div class="line">&gt; Parsing inputs... done.</div>
+                      <div class="line">&gt; Running user story generator...</div>
+                      <div class="line font-green">&gt; Success: requirements.md compiled. [98% Confidence]</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="video-play-overlay">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" fill="rgba(15, 21, 36, 0.8)" stroke="#8B5CF6" stroke-width="2"/>
+                <path d="M10 8V16L16 12L10 8Z" fill="#F8FAFC"/>
+              </svg>
+              <span>Click to Play Demo Walkthrough</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="section-container footer-grid">
+      <div class="footer-brand-col">
+        <a href="#" class="footer-logo">
+          <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="url(#footerLogoGrad)" />
+            <path d="M9 16L13 20L23 10" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3B82F6" />
+                <stop offset="1" stop-color="#8B5CF6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span>PMO Copilot <span class="logo-accent">AI</span></span>
+        </a>
+        <p class="footer-description">
+          A premium multi-agent AI system designed to assist project management offices, product leads, and delivery teams in generating plans, registers, and analysis.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Platform</h4>
+        <ul class="footer-links-list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Resources</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://github.com/placeholder-pmo-copilot-ai" target="_blank" rel="noopener noreferrer">GitHub Project</a></li>
+          <li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="footer-links-list">
+          <li><a href="mailto:support@pmocopilot.ai">support@pmocopilot.ai</a></li>
+          <li><span class="footer-text">London, UK / Global</span></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="section-container footer-bottom-flex">
+        <p class="footer-copyright">&copy; 2026 PMO Copilot AI. Powered by Google Gemini 2.0.</p>
+        <p class="footer-status">System Status: <span class="status-online">Online</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Javascript File -->
+  <script src="app.js"></script>
+</body>
+</html>
